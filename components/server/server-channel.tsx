@@ -40,7 +40,7 @@ export const ServerChannel = ({ channel, server, role }: ServerChannelProps) => 
                 className={cn(
                     "line-clamp-1 font-semibold text-sm text-zinc-500 group-hover:text-zinc-600 dark:text-zinc-400 dark:group-hover:text-zinc-300 transition",
                     params?.channelId === channel.id &&
-                    "text-primary dark:text-zinc-200 dark:group-hover:text-white "
+                    "text-primary dark:text-zinc-200 dark:group-hover:text-white"
                 )}
             >
                 {channel.name}
@@ -49,7 +49,7 @@ export const ServerChannel = ({ channel, server, role }: ServerChannelProps) => 
                 <div className="ml-auto flex items-center gap-x-2">
                     <ActionToolTip label="Edit">
                         <Edit
-                            onClick={() => {}}
+                            onClick={() => onOpen("editChannel", {server, channel})}
                             className="hidden group-hover:block w-4 h-4 text-zinc-500 hover:text-zinc-600 dark:text-zinc-400 dark:hover:text-zinc-300 transition"
                         />
                     </ActionToolTip>
