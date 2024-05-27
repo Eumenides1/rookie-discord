@@ -9,6 +9,7 @@ import axios from "axios";
 import { Form, FormControl, FormField, FormItem } from "../ui/form";
 import { Plus, Smile } from "lucide-react";
 import { Input } from "../ui/input";
+import { useModal } from "@/hooks/use-modal-store";
 
 interface ChatInputProps {
     apiUrl: string,
@@ -22,6 +23,8 @@ const formSchema = z.object({
 })
 
 export const ChatInput = ({apiUrl, query, name, type}: ChatInputProps) => {
+
+    const { onOpen } = useModal()
 
     const router = useRouter();
 
@@ -60,7 +63,7 @@ export const ChatInput = ({apiUrl, query, name, type}: ChatInputProps) => {
                                 <div className=" relative p-4 pb-6">
                                     <button
                                         type="button"
-                                        onClick={() => {}}
+                                        onClick={() => onOpen("messageFile", {apiUrl, query})}
                                         className="absolute top-7 left-8 h-[24px] w-[24px]
                                         bg-zinc-500 dark:bg-zinc-400 hover:bg-zinc-600 
                                         rounded-full transition dark:hover:bg-zinc-300 
