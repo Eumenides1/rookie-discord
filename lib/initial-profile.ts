@@ -1,11 +1,12 @@
 import { currentUser, auth } from "@clerk/nextjs/server";
 import { db } from '@/lib/db';
 import { randomUUID } from "crypto";
+import { redirectToSignIn } from "@clerk/nextjs";
 
 export const initialProfile = async () => {
     const user = await currentUser();
     if (!user) {
-        return auth().redirectToSignIn();
+        return redirectToSignIn()
     } 
 
     const profile = await db.profile.findUnique({
